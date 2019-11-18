@@ -53,7 +53,7 @@ public:
 		return alloc_t();
 	}
 
-	void deallocate(T* p, std::size_t n) const {
+	void deallocate([[maybe_unused]] T* p, [[maybe_unused]] std::size_t n) const {
 		std::cout << "deallocate" << "[n = " << n << "]" << std::endl;
 	}
 
