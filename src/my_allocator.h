@@ -1,7 +1,6 @@
 #pragma once
 #include <list>
-//#include <array>
-//#include <utility>
+
 
 template <typename T>
 struct alloc_part {
@@ -30,42 +29,29 @@ public:
 		using other = my_allocator<U, N>;
 	};
 
-	my_allocator():_data(){
-		std::cout << "Constract allocator!" << std::endl;
-	}
+	my_allocator():_data(){}
 
-	~my_allocator() {
-		std::cout << "Destruct allocator!" << std::endl;
-	};
+	~my_allocator() {};
 
 	T* allocate(std::size_t n)  {
-		std::cout << "allocate" << "[n = " << n << "]" << std::endl;
-
-		if (n > N) { throw std::bad_alloc(); }
+				if (n > N) { throw std::bad_alloc(); }
 		if (_data.empty() || size_less_n(n)) {
-			//T* temp = reinterpret_cast<T*>(std::malloc(N * sizeof(T)));
-			_data.emplace_back(N);
+				_data.emplace_back(N);
 			std::cout << "allocate_new_place" << "[n = " << n << "]" << std::endl;
 		}
-		//T* ret = (_data.back()._array)+ _data.back()._size;
-		//++(_data.back()._size);
-		
+				
 		return alloc_t();
 	}
 
-	void deallocate([[maybe_unused]] T* p, [[maybe_unused]] std::size_t n) const {
-		std::cout << "deallocate" << "[n = " << n << "]" << std::endl;
-	}
+	void deallocate([[maybe_unused]] T* p, [[maybe_unused]] std::size_t n) const {}
 
 	template<typename U, typename ...Args>
 	void construct(U* p, Args&&...args) const {
-		std::cout << "construct" << std::endl;
 		new(p) U(std::forward<Args>(args)...);
 	};
 
 	template <typename U>
 	void destroy(U* p) const {
-		std::cout << "destruct" << std::endl;
 		p->~U();
 	}
 
