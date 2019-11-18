@@ -2,7 +2,6 @@
 #include <utility>
 #include "my_allocator.h"
 
-//êëàññ, ðåàëèçóþùèé ÿ÷åéêó äÿë êîíòåéíåðà
 template <typename T>
 struct Node {
 	T _item;
