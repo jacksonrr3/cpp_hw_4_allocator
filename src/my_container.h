@@ -59,7 +59,7 @@ class Queue {
 	allocator _alloc;
 
 public:
-	Queue():_alloc(), _head( nullptr), _tail (nullptr) {}
+	Queue(): _head( nullptr), _tail (nullptr), _alloc() {}
 
 	~Queue() {
 		//while (!isEmpty()) {
