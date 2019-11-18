@@ -52,7 +52,7 @@ struct Node {
 };
 
 
-template <typename T, typename allocator= std::allocator<Node<typename T> > >
+template <typename T, typename allocator= std::allocator<Node<T> > >
 class Queue {
 	Node<T>* _head;
 	Node<T>* _tail;
@@ -106,7 +106,7 @@ public:
 	using value_type = T;
 
 	class const_iterator: 
-		std::iterator<std::forward_iterator_tag, const value_type, ptrdiff_t, const value_type*, const value_type&> {
+		std::iterator<std::forward_iterator_tag, const value_type, std::ptrdiff_t, const value_type*, const value_type&> {
 	public:
 		Node<T>* _node;
 
