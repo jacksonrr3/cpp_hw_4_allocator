@@ -1,6 +1,6 @@
 #pragma once
 #include <utility>
-#include "allocator.h"
+#include "my_allocator.h"
 
 //êëàññ, ðåàëèçóþùèé ÿ÷åéêó äÿë êîíòåéíåðà
 template <typename T>
