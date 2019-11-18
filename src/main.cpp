@@ -35,7 +35,6 @@ double make_fib(size_t n) {
 	return make_fib(n-1) + make_fib(n-2);
 }
 
-
 template <typename T>
 void make_map(T& cont, size_t n) {
 
@@ -47,7 +46,6 @@ void make_map(T& cont, size_t n) {
 	}
 }
 
-
 template <typename T>
 void make_cont(T& cont, size_t n) {
 	
@@ -56,7 +54,6 @@ void make_cont(T& cont, size_t n) {
 		std::cout << "---" << std::endl;
 	}
 }
-
 
 
 int main(int, char* []) {
