@@ -14,8 +14,8 @@ public:
 
 	~alloc_part() { std::free(_array); }
 
-	template<typename T, int N>
-	friend class my_allocator;
+	template<int N>
+	friend class my_allocator<T, N>;
 };
 
 template<typename T, int N>
