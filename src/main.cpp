@@ -13,7 +13,7 @@ struct hard {
 	int i;
 	double d;
 
-	hard(int i, double d) : i(i), d(d) { std::cout << "Hard_construct" << std::endl; };
+	hard(int i, double d) : i(i), d(d) {};
 
 	hard(const hard&)= delete;
 	   // { std::cout << "const hard&" << std::endl; };
@@ -21,7 +21,7 @@ struct hard {
 	hard(hard&&) = delete;
 	 //   { std::cout << "hard&&" << std::endl; };
 
-	~hard() { std::cout << "Hard_destruct" << std::endl; };
+	~hard() {};
 };
 
 int make_fac(std::size_t n) {
@@ -38,7 +38,7 @@ double make_fib(size_t n) {
 
 template <typename T>
 void make_map(T& cont, size_t n) {
-	//çàïîëíåíèå êîíòåéíåðà çíà÷åíèÿìè
+
 	for (size_t i = 0; i < n; ++i) {
 		cont.emplace(std::piecewise_construct,
 			std::forward_as_tuple(i),
@@ -71,8 +71,6 @@ int main(int, char* []) {
 	make_cont(q_std, 11);
 	make_cont(q_all, 11);
 
-
-	//âûâîä íà ýêðàí èç êîíòåéíåðà
 	for (auto& i : m_all) {
 		std::cout << i.second.i << " " << i.second.d << std::endl;
 	}
@@ -80,7 +78,6 @@ int main(int, char* []) {
 	for (auto& i : q_all) {
 		std::cout << i.i << " " << i.d << std::endl;
 	}
-
 
 	return 0;
 }
