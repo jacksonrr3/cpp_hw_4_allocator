@@ -4,18 +4,16 @@
 //#include <utility>
 
 template <typename T>
-class alloc_part {
+struct alloc_part {
 	std::size_t _size = 0;
 	T* _array;
-public:
+
 	alloc_part(size_t n){
 		_array = reinterpret_cast<T*>(std::malloc(n * sizeof(T)));
 	}
 
 	~alloc_part() { std::free(_array); }
 
-	template<int N>
-	friend class my_allocator<T, N>;
 };
 
 template<typename T, int N>
