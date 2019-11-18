@@ -2,7 +2,7 @@
 #include <utility>
 #include "allocator.h"
 
-//класс, реализующий ячейку дял контейнера
+//ГЄГ«Г Г±Г±, Г°ГҐГ Г«ГЁГ§ГіГѕГ№ГЁГ© ГїГ·ГҐГ©ГЄГі Г¤ГїГ« ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г 
 template <typename T>
 struct Node {
 	T _item;
