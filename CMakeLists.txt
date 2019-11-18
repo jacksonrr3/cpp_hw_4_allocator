@@ -10,7 +10,7 @@ set(SOURCES_LIB_2 src/my_container.h)
 
 add_executable(allocator ${SOURCES} ${SOURCES_LIB_1} ${SOURCES_LIB_2})
 
-set_target_properties(print_ip PROPERTIES
+set_target_properties(allocator PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED ON
     COMPILE_OPTIONS "-Wpedantic;-Wall;-Wextra"
