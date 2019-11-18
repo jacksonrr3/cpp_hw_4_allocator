@@ -8,52 +8,6 @@
 #include "allocator.h"
 #include "my_cont.h"
 
-
-template<typename T>
-struct logging_allocator {
-	using value_type = T;
-	    using pointer = T*;
-		using const_pointer = const T*;
-		using reference = T&;
-		using const_reference = const T&;
-
-		template<typename U>
-		struct rebind {
-			using other = logging_allocator<U>;
-		};
-
-		logging_allocator() {
-			std::cout << "Constract allocator!" << std::endl;
-		}
-
-	T* allocate(std::size_t n) const {
-		std::cout << "allocate" << "[n = " << n << "]" << std::endl;
-		auto p = std::malloc(n * sizeof(T));
-		if (!p)
-			throw std::bad_alloc();
-		return reinterpret_cast<T*>(p);
-	}
-
-	void deallocate(T* p, std::size_t n) const {
-		std::cout << "deallocate" << "[n = " << n << "]" << std::endl;
-		std::free(p);
-	}
-
-	template<typename U, typename ...Args>
-	void construct(U* p, Args&&...args) const {
-		std::cout << "construct" << std::endl;
-		new(p) U(std::forward<Args>(args)...);
-	};
-
-	template <typename U>
-	void destroy(U* p) const {
-		std::cout << "destruct" << std::endl;
-		p->~U();
-	}
-};
-
-
-
 struct hard {
 	int i;
 	double d;
@@ -80,10 +34,10 @@ double make_fib(size_t n) {
 	return make_fib(n-1) + make_fib(n-2);
 }
 
-//фнкция для заполнения и вывода на экран контейнера std::map
+//ГґГ­ГЄГ¶ГЁГї Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї ГЁ ГўГ»ГўГ®Г¤Г  Г­Г  ГЅГЄГ°Г Г­ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  std::map
 template <typename T>
 void make_map(T& cont, size_t n) {
-	//заполнение контейнера значениями
+	//Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  Г§Г­Г Г·ГҐГ­ГЁГїГ¬ГЁ
 	for (size_t i = 0; i < n; ++i) {
 		cont.emplace(std::piecewise_construct,
 			std::forward_as_tuple(i),
@@ -92,10 +46,10 @@ void make_map(T& cont, size_t n) {
 	}
 }
 
-//фнкция для заполнения и вывода на экран контейнера my_cont
+//ГґГ­ГЄГ¶ГЁГї Г¤Г«Гї Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГї ГЁ ГўГ»ГўГ®Г¤Г  Г­Г  ГЅГЄГ°Г Г­ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  my_cont
 template <typename T>
 void make_cont(T& cont, size_t n) {
-	//заполнение контейнера значениями
+	//Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г  Г§Г­Г Г·ГҐГ­ГЁГїГ¬ГЁ
 	for (size_t i = 0; i < n; ++i) {
 		cont.enqueue(make_fac(i), make_fib(i));
 		std::cout << "---" << std::endl;
@@ -135,7 +89,7 @@ int main(int, char* []) {
 	make_cont(q_all, 11);
 
 
-	//вывод на экран из контейнера
+	//ГўГ»ГўГ®Г¤ Г­Г  ГЅГЄГ°Г Г­ ГЁГ§ ГЄГ®Г­ГІГҐГ©Г­ГҐГ°Г 
 	for (auto& i : m_all) {
 		std::cout << i.second.i << " " << i.second.d << std::endl;
 	}
