@@ -9,6 +9,7 @@
 #include "my_cont.h"
 
 struct hard {
+	
 	int i;
 	double d;
 
