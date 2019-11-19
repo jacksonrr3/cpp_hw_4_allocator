@@ -1,22 +1,23 @@
 #pragma once
 #include <list>
 
-
-template <typename T>
-struct alloc_part {
-	std::size_t _size = 0;
-	T* _array;
-
-	alloc_part(size_t n){
-		_array = reinterpret_cast<T*>(std::malloc(n * sizeof(T)));
-	}
-
-	~alloc_part() { std::free(_array); }
-
-};
-
 template<typename T, int N>
 class my_allocator {
+
+	//вспомогательная структура одного блока аллоцированных данных  
+	template <typename T>
+	struct alloc_part {
+		std::size_t _size = 0;		// количество занятых участков
+		T* _array;					// указатель на область памяти
+
+		alloc_part(size_t n) {		//конструктор, вызов malloc
+			_array = reinterpret_cast<T*>(std::malloc(n * sizeof(T)));  
+		}
+		~alloc_part() {				//деструктор, освобождение выделенного блока памяти
+			std::cout << "free/n";
+		} 
+	};
+
 public:
 	using value_type = T;
 	using pointer = T*;
@@ -29,17 +30,15 @@ public:
 		using other = my_allocator<U, N>;
 	};
 
-	my_allocator():_data(){}
+	my_allocator() :_data() {}
 
 	~my_allocator() {};
 
-	T* allocate(std::size_t n)  {
-				if (n > N) { throw std::bad_alloc(); }
+	T* allocate(std::size_t n) {
+		if (n > N) { throw std::bad_alloc(); }
 		if (_data.empty() || size_less_n(n)) {
-				_data.emplace_back(N);
-			std::cout << "allocate_new_place" << "[n = " << n << "]" << std::endl;
+			_data.emplace_back(N);
 		}
-				
 		return alloc_t();
 	}
 
@@ -67,5 +66,5 @@ private:
 		return ret;
 	}
 
-	std::list<alloc_part<T>> _data;
+	std::list<alloc_part<T>> _data;  //контейнер для хранения объектов аллоцированных блоков памяти
 };
