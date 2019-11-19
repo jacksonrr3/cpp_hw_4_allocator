@@ -82,27 +82,27 @@ int main(int, char* []) {
 
 	//тест работы конструктора копирования при совпадающих аллокаторах контейнера
 	Queue<int, my_allocator<Node<int>, 10>> q_all_2(q_all_1);
-	for (auto& i : q_all_2) {
-	//	std::cout << i << std::endl;   
-	}
+	/*for (auto& i : q_all_2) {
+		std::cout << i << std::endl;   
+	*/}
 
 	//тест работы конструктора копирования при отличающихся аллокаторах контейнера
 	Queue<int, logging_allocator<Node<int>>> q_all_3(q_all_1);
-	for (auto& i : q_all_2) {
-	//	std::cout << i << std::endl;
-	}
+	/*for (auto& i : q_all_2) {
+		std::cout << i << std::endl;
+	*/}
 
 	//тест работы конструктора копирования перемещением при совпадающих аллокаторах контейнера
 	Queue<int, my_allocator<Node<int>, 10>> q_all_4(std::move(q_all_2));
-	for (auto& i : q_all_4) {
-	//	std::cout << i << std::endl;
-	}
+	/*for (auto& i : q_all_4) {
+		std::cout << i << std::endl;
+	*/}
 
 	//тест работы конструктора копирования перемещением при совпадающих аллокаторах контейнера
 	Queue<int, my_allocator<Node<int>, 10>> q_all_5(std::move(q_all_3));
-	for (auto& i : q_all_5) {
-	//	std::cout << i << std::endl;
-	}
+	/*for (auto& i : q_all_5) {
+		std::cout << i << std::endl;
+	*/}
 
 	return 0;
 }
