@@ -7,8 +7,9 @@ find_package(Threads REQUIRED)
 set(SOURCES src/main.cpp)
 set(SOURCES_LIB_1 src/my_allocator.h)
 set(SOURCES_LIB_2 src/my_container.h)
+set(SOURCES_LIB_3 src/any_allocator.h)
 
-add_executable(allocator ${SOURCES} ${SOURCES_LIB_1} ${SOURCES_LIB_2})
+add_executable(allocator ${SOURCES} ${SOURCES_LIB_1} ${SOURCES_LIB_2} ${SOURCES_LIB_3})
 
 set_target_properties(allocator PROPERTIES
     CXX_STANDARD 17
