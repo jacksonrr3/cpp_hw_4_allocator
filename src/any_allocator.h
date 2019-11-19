@@ -22,7 +22,7 @@ struct logging_allocator {
 		return reinterpret_cast<T*>(p);
 	}
 
-	void deallocate(T* p, std::size_t n) const {
+	void deallocate(T* p, [[maybe_unused]] std::size_t n) const {
 		//std::cout << __PRETTY_FUNCTION__ << "[n = " << n << "]" << std::endl;
 		std::free(p);
 	}
