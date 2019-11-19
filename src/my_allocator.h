@@ -8,14 +8,13 @@ class my_allocator {
 	template <typename U>
 	struct alloc_part {
 		std::size_t _size = 0;		// количество занятых участков
-		U* _array;					// указатель на область памяти
+		U* _array;			// указатель на область памяти
 
 		alloc_part(size_t n) {		//конструктор, вызов malloc
 			_array = reinterpret_cast<U*>(std::malloc(n * sizeof(U)));  
 		}
-		~alloc_part() {				//деструктор, освобождение выделенного блока памяти
-			std::cout << "free/n";
-		} 
+		
+		~alloc_part() {}				//деструктор, освобождение выделенного блока памяти
 	};
 
 public:
