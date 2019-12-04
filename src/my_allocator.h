@@ -14,7 +14,9 @@ class my_allocator {
 			_array = reinterpret_cast<U*>(std::malloc(n * sizeof(U)));  
 		}
 		
-		~alloc_part() {}				//деструктор, освобождение выделенного блока памяти
+		~alloc_part() {    		//деструктор, освобождение выделенного блока памяти
+		std::free(_array);
+		}				
 	};
 
 public:
@@ -38,7 +40,7 @@ public:
 		if (_data.empty() || size_less_n(n)) {
 			_data.emplace_back(N);
 		}
-		return alloc_t();
+		return alloc_t(n);
 	}
 
 	void deallocate([[maybe_unused]] T* p, [[maybe_unused]] std::size_t n) const {}
@@ -59,9 +61,9 @@ private:
 		return _data.back()._size + n >= N;
 	}
 
-	T* alloc_t() {
+	T* alloc_t(std::size_t n) {
 		T* ret = (_data.back()._array) + _data.back()._size;
-		++(_data.back()._size);
+		_data.back()._size += n;
 		return ret;
 	}
 
