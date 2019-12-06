@@ -73,22 +73,22 @@ int main(int, char* []) {
 		std::cout << i.i << " " << i.d << std::endl;
 	}
 
-/*	
+	
 	//дополнительный контейнер для проверки конструкторов копирования
 	//так как у структуры Hard удалены конструкторы копирования, используем int
 	auto q_all_1 = Queue<int, my_allocator<Node<int>, 10>>{};
 	for (size_t i = 0; i < 11; ++i) {
 		q_all_1.enqueue(i);
 	}
-*/
+
 	//тест работы конструктора копирования при совпадающих аллокаторах контейнера
-//	Queue<int, my_allocator<Node<int>, 10>> q_all_2(q_all_1);
+	Queue<int, my_allocator<Node<int>, 10>> q_all_2(q_all_1);
 	/*for (auto& i : q_all_2) {
 		std::cout << i << std::endl;   
 	}*/
 
 	//тест работы конструктора копирования при отличающихся аллокаторах контейнера
-//	Queue<int, logging_allocator<Node<int>>> q_all_3(q_all_1);
+	Queue<int, logging_allocator<Node<int>>> q_all_3(q_all_1);
 	/*for (auto& i : q_all_2) {
 		std::cout << i << std::endl;
 	}*/
@@ -99,7 +99,7 @@ int main(int, char* []) {
 		std::cout << i << std::endl;
 	}*/
 
-	//тест работы конструктора копирования перемещением при совпадающих аллокаторах контейнера
+	//тест работы конструктора копирования перемещением при отличающихся аллокаторах контейнера
 //	Queue<int, my_allocator<Node<int>, 10>> q_all_5(std::move(q_all_3));
 	/*for (auto& i : q_all_5) {
 		std::cout << i << std::endl;
