@@ -59,11 +59,12 @@ public:
 	}
 	
 	//контруктор копирования перемещением при совпадающих аллокаторах
-	Queue(Queue<T, allocator>&& other) noexcept :_head(nullptr), _tail(nullptr), _alloc()  {
+	Queue(Queue<T, allocator>&& other) noexcept :
+		_head(nullptr), _tail(nullptr), _alloc(std::move(other._alloc)) {
 		//std::cout << "&&_alloc!\n";
 		std::swap(_head, other._head);
 		std::swap(_tail, other._tail);
-		std::swap(_alloc, other._alloc);
+		//std::swap(_alloc, other._alloc);
 	}
 
 	//контруктор копирования перемещением при разных аллокаторах
