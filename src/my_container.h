@@ -74,13 +74,14 @@ public:
 	}
 
 	~Queue() {
+		/*
 		while (!isEmpty()) {
 			Node<T>* temp = _head;
 			_head=_head->getNext();
 			_alloc.destroy(temp);
 			_alloc.deallocate(temp, 1);
 		}
-
+		*/
 	}
 
 	bool isEmpty() const {
