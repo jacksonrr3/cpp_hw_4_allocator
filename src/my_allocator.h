@@ -32,6 +32,8 @@ public:
 	};
 
 	my_allocator() :_data() {}
+	
+	my_allocator(my_allocator&& other):_data(std::move(other._data)) {}
 
 	~my_allocator() {};
 
