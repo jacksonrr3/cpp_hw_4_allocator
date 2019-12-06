@@ -15,7 +15,7 @@ class my_allocator {
 		}
 		
 		~alloc_part() {    		//деструктор, освобождение выделенного блока памяти
-		std::free(_array);
+			std::free(_array);
 		}				
 	};
 
@@ -58,7 +58,7 @@ public:
 private:
 
 	bool size_less_n(std::size_t n) {
-		return _data.back()._size + n >= N;
+		return _data.back()._size + n > N;
 	}
 
 	T* alloc_t(std::size_t n) {
