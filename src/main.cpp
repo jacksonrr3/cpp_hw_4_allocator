@@ -55,16 +55,16 @@ void make_cont(T& cont, size_t n) {
 
 int main(int, char* []) {
 
-//	auto m_std = std::map<int, hard>{};
-//	auto m_all = std::map<int, hard, std::less<int>, my_allocator<std::pair<const int, hard>, 10>>{};
-//	auto q_std = Queue<hard>{};
+	auto m_std = std::map<int, hard>{};
+	auto m_all = std::map<int, hard, std::less<int>, my_allocator<std::pair<const int, hard>, 10>>{};
+	auto q_std = Queue<hard>{};
 	auto q_all = Queue<hard, my_allocator<Node<hard>, 10>>{};
 
-//	make_map(m_std, 11);
-//	make_map(m_all, 11);
-//	make_cont(q_std, 11);
+	make_map(m_std, 11);
+	make_map(m_all, 11);
+	make_cont(q_std, 11);
 	make_cont(q_all, 11);
-/*
+
 	for (auto& i : m_all) {
 		std::cout << i.second.i << " " << i.second.d << std::endl;
 	}
@@ -72,7 +72,7 @@ int main(int, char* []) {
 	for (auto& i : q_all) {
 		std::cout << i.i << " " << i.d << std::endl;
 	}
-*/
+
 /*	
 	//дополнительный контейнер для проверки конструкторов копирования
 	//так как у структуры Hard удалены конструкторы копирования, используем int
