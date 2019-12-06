@@ -74,14 +74,15 @@ public:
 	}
 
 	~Queue() {
-		/*
+		
 		while (!isEmpty()) {
 			Node<T>* temp = _head;
+			if (_head == tail) {_tail = _tail->getNext();}
 			_head=_head->getNext();
 			_alloc.destroy(temp);
 			_alloc.deallocate(temp, 1);
 		}
-		*/
+		
 	}
 
 	bool isEmpty() const {
@@ -108,8 +109,10 @@ public:
 
 	T dequeue() {
 		if (isEmpty()) return 0;
+		
 		T item = _head->getItem();
 		Node<T>* temp_head = _head;
+		if (_head == tail) {_tail = _tail->getNext();}
 		_head = _head->getNext();
 		_alloc.destroy(temp_head);
 		_alloc.deallocate(temp_head, 1);
